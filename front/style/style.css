@@ -1,0 +1,268 @@
+@keyframes rotateFadeAway {
+  50% {
+    transform: rotate(5deg) translate(15px, -30px);
+  }
+  100% {
+    transform: scale(0.9) rotate(10deg) translate(30px, -50px);
+    opacity: 0;
+  }
+}
+:root {
+  --accent-color: #ffdd2d;
+  --bg-light-color: #f6f7f8;
+  --bg-light-grey-color: rgba(36, 74, 127, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.button {
+  border-radius: 8px;
+  background-color: var(--bg-light-grey-color);
+  padding: 12px 16px;
+  font: 400 15px/20px "Neue Haas Unica W1G", sans-serif;
+  color: hsl(216, 93%, 52%);
+  cursor: pointer;
+}
+
+.content-center {
+  width: 90%;
+  max-width: 824px;
+  margin: 0 auto;
+}
+
+header {
+  width: 100%;
+  min-height: 64px;
+  background-color: var(--bg-light-color);
+  display: flex;
+}
+header .content-center {
+  justify-content: center;
+  align-items: center;
+}
+header .content-center .header-container {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-content: center;
+}
+@media (max-width: 625px) {
+  header .content-center .header-container {
+    justify-content: center;
+  }
+}
+
+.header-navigation {
+  min-width: 260px;
+  max-width: 381px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-navigation svg {
+  width: 29px;
+  height: 29px;
+}
+.header-search-input {
+  border: none;
+  outline: 1px solid transparent;
+  background-color: var(--bg-light-grey-color);
+  border-radius: 8px;
+  padding: 6px 10px;
+  transition: outline 0.25s ease-in-out;
+}
+.header-search-input:active, .header-search-input:focus {
+  outline: 1px solid var(--accent-color);
+}
+
+.header-authentication {
+  max-width: 244px;
+  display: flex;
+  gap: 16px;
+}
+.header-auth-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  fill-opacity: initial;
+  transition: color 0.3s ease-in-out, fill 0.3s ease-in-out;
+}
+.header-auth-button:hover svg path {
+  fill: #000;
+  fill-opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+.header-auth-button:hover span {
+  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.header-auth-button span {
+  font-family: "Neue Haas Unica W1G", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.54);
+  transition: all 0.3s ease-in-out;
+}
+
+.posts-section {
+  padding-top: 65px;
+}
+
+.post {
+  padding: 20px 24px 24px 24px;
+  border-radius: 24px;
+  box-shadow: 0px 6px 34px rgba(0, 0, 0, 0.12);
+  margin-bottom: 65px;
+}
+
+.profile-info {
+  font-family: "Tinkoff Sans", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.profile-info-pic {
+  width: 1.5em;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 100%;
+}
+
+.post-content {
+  margin-bottom: 24px;
+}
+.post-content-p {
+  font-family: "Neue Haas Unica W1G", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0px;
+}
+
+.post-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.post-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.post-btn .icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.post-btn .icon-container svg g path {
+  fill: transparent;
+  stroke-width: 2px;
+  transition: fill 0.2s ease-in-out;
+}
+.post-btn .icon-container svg {
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out;
+}
+.post-btn .icon-container svg:last-child {
+  position: absolute;
+  display: none;
+}
+.post-btn .icon-container svg:last-child g path {
+  fill: #1e1e1e;
+}
+.post-btn:hover {
+  cursor: pointer;
+}
+.post-btn:hover .icon-container svg {
+  transform: scale(1.1);
+}
+.post-btn:active .icon-container svg:last-child {
+  display: block;
+  animation: rotateFadeAway 0.2s ease-in-out 0s 1 forwards;
+}
+
+.button--primary {
+  color: hsl(0, 0%, 0%);
+  background-color: hsl(50, 100%, 59%);
+}
+.auth-form-container {
+  width: 420px;
+  margin: 0 auto;
+  margin-top: 160px;
+  padding-bottom: 24px;
+  border-radius: 24px;
+  box-shadow: 0px 6px 34px rgba(0, 0, 0, 0.12);
+}
+.auth-form-container__header {
+  padding: 20px;
+  text-align: center;
+}
+.auth-form-container__title {
+  margin: 0;
+  font: 500 24px/28px sans-serif;
+  font-family: "Tinkoff Sans", sans-serif;
+  letter-spacing: 0px;
+  color: hsl(0, 0%, 0%);
+}
+.auth-form-container__input-group {
+  margin: 0 24px 24px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.auth-form-container__input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: hsla(215, 56%, 32%, 0.06);
+  outline: 1px solid transparent;
+  border: none;
+}
+.auth-form-container__input::placeholder {
+  color: rgba(0, 0, 0, 0.54);
+  font: 400 15px/20px "Neue Haas Unica W1G", sans-serif;
+}
+.auth-form-container__input:hover {
+  outline: 1px solid hsla(213, 100%, 7%, 0.12);
+}
+.auth-form-container__input:focus {
+  outline-color: hsl(50, 100%, 59%);
+}
+
+.button-group {
+  margin: 0 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+.button-group * {
+  flex: 1;
+}
