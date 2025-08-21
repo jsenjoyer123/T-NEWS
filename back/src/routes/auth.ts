@@ -11,6 +11,19 @@ export function _resetUsers() {
   nextUserId = 1
 }
 
+// Инициализация тестового пользователя при старте сервера
+// Можно переопределить через переменные окружения SEED_USER и SEED_PASS
+const SEED_USER = process.env.SEED_USER || 'test'
+const SEED_PASS = process.env.SEED_PASS || 'test'
+if (!users.find(u => u.username === SEED_USER)) {
+  users.push({
+    id: nextUserId++,
+    username: SEED_USER,
+    password: SEED_PASS,
+    created_at: new Date().toISOString()
+  })
+}
+
 export function registerAuthRoutes(server: FastifyInstance) {
   // routes assume cookie plugin is registered globally
 

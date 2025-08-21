@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-News</title>
+    <link rel="stylesheet" href="../css_root/style.css">
+</head>
+<body>
+    <header class="header" style="margin-bottom: 65px;">
+        <a href="https://edu.tbank.ru/my-activities/courses/stream/fdedb697-bb33-4ae7-be29-749be31efa4f/unit/ed167739-8146-49d3-803a-c35edabcaa3c">
+            <object type="image/svg+xml" data="../items/t-bank.svg" width="29" height="29" style="pointer-events: none;">
+                <img src="../items/t-bank.svg" alt="T Bank" width="29" height="29"/>
+            </object>
+        </a>
+        <label class="field-row">
+            <input type="text" class="text-input medium" placeholder="Поиск по T-News">
+        </label>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="http://127.0.0.1:5500/final-project/first_page.html">
+                        Выйти
+                        <img src="../items/login.svg" alt="Выйти" width="24" height="24"/>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://127.0.0.1:5500/final-project/login.html">
+                        <img src="../items/lk.svg" alt="Личный кабинет" width="32" height="32"/>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="posts-and-comments lk pr">
+        <div class="profil">
+            <div class="grid-col grid-col-1">
+                <div class="col1-top">
+                    <img src="../items/tui-avatar [subscription].svg" alt="Аватар" width="128" height="128"/>
+                </div>
+                <div class="col1-bottom">
+                    <button class="button button-for-edit-photo">
+                        Изменить фото
+                    </button>
+                </div>
+            </div>
+            <div class="grid-col grid-col-2">
+                <div class="col2-top">
+                    <section class="comment-block">
+                        <header class="post-title text-profil">
+                            <h5>Луций Анней Сенека</h5>
+                            <button class="button delete-comment rename"><img src="../items/rename.svg" alt="Изменить описание" width="24" height="28"/></button>
+                        </header>
+                    </section>
+                </div>
+                <div class="col2-bottom">
+                    <section class="comment-block">
+                        <p class="post-text text-profil">
+                            Обо мне: римский философ-стоик, поэт и государственный деятель. 
+        <br>Воспитатель Нерона и один из крупнейших представителей стоицизма. 
+        <br>Сын Луция (Марка) Аннея Сенеки Старшего (выдающегося ритора и 
+        историка) и Гельвии, младший брат Юния Галлиона. Автор «Нравственных
+        писем к Луцилию», ряда философских трактатов и трагедий
+                        </p>
+                        <button class="button delete-comment rename"><img src="../items/rename.svg" alt="Изменить описание" width="24" height="28"/></button>
+                    </section>
+                </div>
+            </div>
+            <div class="grid-col grid-col-3">
+                <div class="col3-full">
+                    <button class="button secondary button-for-subscibe">
+                        Подписаться
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="posts-and-comments send-post">
+            <label>
+                <input type="text" class="text-input post" placeholder="Введите свой пост"/>
+            </label>
+
+            <button class="button primary comments">Отправить</button>
+        </div>
+
+        <section class="post my-post">
+            <header class="post-title">
+                <img src="../items/avatar.svg" alt="Аватар" width="24" height="24"/>
+                <h4>Луций Анней Сенека</h4>
+            </header>
+
+            <section class="comment-block">
+                <p class="post-text comments">
+                    Бывают заблуждения, имеющие видимость истин
+                </p>
+                <button class="button delete-comment ">
+                        <img src="../items/Container (1).svg" alt="Корзина" width="16" height="20"/>
+                </button>
+            </section>
+
+            <footer class="post-footer">
+                <button class="button primary">
+                    <img src="../items/like.svg" alt="Like" width="24" height="24"/>
+                    1
+                </button>
+                <button class="button secondary">Комментарии 0</button>
+            </footer>
+        </section>
+    </section>
+</body>
+</html>
