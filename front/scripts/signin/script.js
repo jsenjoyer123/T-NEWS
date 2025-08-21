@@ -1,6 +1,5 @@
-// scripts/auth.js
+// signin/script.js (moved from scripts/auth.js)
 // Client-side authentication logic using Fetch API
-// Written in TypeScript, compiled to JavaScript
 
 /**
  * @typedef {Object} Credentials
@@ -59,8 +58,6 @@ async function handleLogin(ev) {
 
 /**
  * Обработчик клика на кнопку «Зарегистрироваться»
- * Сейчас на сервере нет соответствующего endpoint'а, поэтому просто выводим сообщение.
- * Вы можете добавить /register на сервере и поменять URL ниже.
  * @param {MouseEvent} ev
  */
 async function handleSignup(ev) {
@@ -68,11 +65,9 @@ async function handleSignup(ev) {
   const { username, password } = getCredentials();
   if (!username || !password) return;
 
-  // Замените URL на реальный /register, когда он будет готов
   try {
     const data = await sendAuthRequest('http://localhost:3000/register', { username, password });
     alert(data?.message);
-    // window.location.href = 'http://127.0.0.1:33143/main.html'; 
   } catch (e) {
     // ошибка уже обработана
   }

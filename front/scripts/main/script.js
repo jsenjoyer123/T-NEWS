@@ -1,4 +1,4 @@
-// scripts/posts.js
+// main/script.js (moved from scripts/posts.js)
 // Загружает посты с сервера и вставляет их в ленту
 
 /**
@@ -38,6 +38,41 @@ function createPostElement(post) {
   return wrapper;
 }
 
+/** Возвращает набор мок-постов для отображения без бэкенда */
+function getMockPosts() {
+  return [
+    {
+      authorName: 'Alice',
+      authorAvatar: '',
+      content: 'Привет, это мок-пост №1! 🎉',
+      likes: 5,
+      comments: 2,
+    },
+    {
+      authorName: 'Bob',
+      authorAvatar: '',
+      content: 'Сегодня отличный день, делюсь новостью.',
+      likes: 3,
+      comments: 1,
+    },
+    {
+      authorName: 'Charlie',
+      authorAvatar: '',
+      content: 'Ищу напарника для проекта — пишите в личку!',
+      likes: 7,
+      comments: 4,
+    },
+  ];
+}
+
+/** Рендерит массив постов в контейнер */
+function renderPosts(posts) {
+  const container = document.getElementById('postsContainer');
+  if (!container) return;
+  container.innerHTML = '';
+  posts.forEach((p) => container.appendChild(createPostElement(p)));
+}
+
 /**
  * Загружает посты и размещает их на странице
  */
@@ -49,24 +84,24 @@ async function loadPosts() {
 
     // Сервер может вернуть массив постов или объект вида { posts: [...] }
     const posts = Array.isArray(data) ? data : data.posts || [];
+    let normalized = posts.map((raw) => ({
+      authorName: raw.authorName || raw.author || raw.username || raw.author_name || 'Аноним',
+      authorAvatar: raw.authorAvatar || raw.avatarUrl || raw.avatar || 'img/profile-pic.jpg',
+      content: raw.content || raw.text || raw.body || '',
+      likes: raw.likes ?? raw.likeCount ?? 0,
+      comments: raw.comments ?? raw.commentCount ?? 0,
+    }));
 
-    const container = document.getElementById('postsContainer');
-    container.innerHTML = '';
+    // Если бэкенд вернул пусто — покажем мок-данные
+    if (!normalized.length) {
+      normalized = getMockPosts();
+    }
 
-    posts.forEach((raw) => {
-      const p = {
-        authorName: raw.authorName || raw.author || raw.username || 'Аноним',
-        authorAvatar: raw.authorAvatar || raw.avatarUrl || raw.avatar || 'img/profile-pic.jpg',
-        content: raw.content || raw.text || raw.body || '',
-        likes: raw.likes ?? raw.likeCount ?? 0,
-        comments: raw.comments ?? raw.commentCount ?? 0,
-      };
-      container.appendChild(createPostElement(p));
-    });
+    renderPosts(normalized);
   } catch (e) {
     console.error(e);
-    const container = document.getElementById('postsContainer');
-    container.innerHTML = '<p style="color:red">Не удалось загрузить посты 🙁</p>';
+    // При ошибке бэкенда — тоже отображаем мок-данные
+    renderPosts(getMockPosts());
   }
 }
 
